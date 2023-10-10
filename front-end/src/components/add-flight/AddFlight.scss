@@ -1,0 +1,438 @@
+.flight-container {
+  &.modal-popup {
+    &.MuiPaper-root {
+      border-radius: 0;
+    }
+  }
+
+  &.MuiPaper-root {
+    border-radius: 30px;
+    background-color: var(--white);
+  }
+
+  .edit-flight {
+    padding-left: 36px;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: normal;
+  }
+
+  .flight-details-divider {
+    &.MuiDivider-root {
+      width: 1px;
+      background-color: var(--sub-primary);
+      height: 58px;
+      margin: 0 30px;
+    }
+  }
+
+  .add-flight-header {
+    padding: 20px 26px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 1px solid #e1f2ec;
+    position: relative;
+
+    .add-flight {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 19.6px;
+      color: var(--dark);
+      margin-left: 5px;
+    }
+
+    .active-slide {
+      position: absolute;
+      bottom: -1px;
+      height: 1.5px;
+      background-color: var(--primary);
+      width: 164px;
+      left: 0;
+    }
+  }
+
+  .uploaded-file-preview {
+    width: 124px;
+    height: 123px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .image-container {
+    width: 124px;
+    height: 123px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+  }
+
+  .file-upload-form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 19px 36px;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+
+    .file-upload-container {
+      display: flex;
+      flex-direction: column;
+      margin-left: 30px;
+
+      @media (max-width: 767px) {
+        margin-left: 0;
+        margin-top: 30px;
+      }
+    }
+
+    .company-name {
+      display: flex;
+      flex-direction: column;
+
+      @media (max-width: 868px) {
+        margin-top: 30px;
+      }
+    }
+
+    .profile-label {
+      font-size: 14px;
+      color: var(--dark);
+      font-weight: 500;
+      text-transform: capitalize;
+      line-height: 19.6px;
+    }
+
+    .profile-label-placeholder {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--lighter-text);
+      line-height: 19.6px;
+      margin-top: 10px;
+    }
+
+    .profile-divider {
+      &.MuiDivider-root {
+        width: 1px;
+        height: 50px;
+        background-color: #e1f2ec;
+        margin: 0 30px;
+      }
+
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+
+    .company-name-field {
+      .MuiInput-root {
+        &::after {
+          display: none;
+        }
+
+        &::before {
+          display: none;
+        }
+
+        .MuiInputBase-input {
+          &::placeholder {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 19.6px;
+            color: var(--lighter-text);
+          }
+        }
+      }
+    }
+
+    #actual-btn {
+      display: none;
+    }
+
+    .browse-button {
+      padding: 14px 21px;
+      margin-top: 20px;
+      border-radius: 8px;
+      border: 1.5px solid #e1f2ec;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 19.6px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      width: 122px;
+
+      img {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .sub-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px 30px;
+
+    &.edit-flight-form {
+      padding-top: 50px;
+      padding-left: 36px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    &.add-flight-form {
+      padding-top: 20px;
+      padding-left: 193px;
+    }
+
+    .flight-details-divider {
+      &.MuiDivider-root {
+        width: 1px;
+        background-color: var(--sub-primary);
+        height: 58px;
+      }
+    }
+
+    .custom-styling-date-picker {
+      &.edit-flight-date-picker {
+        margin-left: -16px;
+      }
+      > div {
+        padding-top: 18px;
+      }
+
+      .date-range-picker {
+        .MuiFormLabel-root {
+          font-family: "Montserrat";
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 22px;
+          color: var(--dark);
+        }
+
+        input {
+          font-family: "Montserrat";
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          color: #a1adb2;
+        }
+
+        .MuiInputBase-root {
+          border: none;
+          width: 100px;
+
+          fieldset {
+            border: none;
+
+            legend {
+              display: none;
+            }
+          }
+        }
+
+        .MuiMultiInputDateRangeField-separator {
+          display: none;
+        }
+      }
+    }
+
+    .flight-container {
+      display: flex;
+
+      .flight {
+        width: 100%;
+        max-width: 130px;
+
+        .flight-form-text {
+          font-family: "Montserrat";
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 17px;
+          margin-bottom: 10px;
+          color: var(--dark);
+        }
+
+        .select-airport {
+          display: flex;
+          gap: 10px;
+
+          input {
+            border: none;
+            outline: none;
+            color: #a1adb2;
+            font-family: "Montserrat";
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            width: 100%;
+            max-width: 100px;
+          }
+        }
+      }
+
+      .flight-swap {
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+      }
+    }
+
+    .travelers {
+      .traveler-text {
+        font-family: "Montserrat";
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 17px;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .choose-traveler {
+        display: flex;
+        cursor: pointer;
+
+        .user-logo {
+          margin-right: 2px;
+        }
+
+        .selected-user {
+          font-family: "Montserrat";
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          color: #a1adb2;
+
+          button:hover {
+            background-color: unset;
+          }
+
+          span {
+            font-family: "Montserrat";
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            color: #a1adb2;
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+
+    .search-btn {
+      &.edit-flight-button {
+        &.MuiButton-root {
+          width: 98px;
+          margin: auto;
+          text-transform: capitalize;
+        }
+      }
+      &.add-flight-button {
+        &.MuiButton-root {
+          width: 98px;
+          text-transform: capitalize;
+        }
+      }
+
+      &.MuiButton-root {
+        font-family: "Montserrat";
+        width: 100%;
+        max-width: 153px;
+        height: 100%;
+        max-height: 50px;
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: var(--primary);
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+.select-travelers {
+  .MuiPaper-elevation {
+    border-radius: 20px;
+    padding: 19px 29px 32px 30px;
+
+    .counter:hover {
+      background-color: unset;
+    }
+
+    .MuiMenu-list {
+      padding: 0;
+
+      .MuiMenuItem-root {
+        padding: 0;
+      }
+    }
+  }
+  .modal-container {
+    display: flex;
+    justify-content: space-between;
+    .adults-text {
+      font-family: "Montserrat";
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      margin-left: 5px;
+      margin-bottom: 10px;
+    }
+    .adult-count {
+      padding: 10px 15px;
+      border: 1px solid var(--sub-primary);
+      border-radius: 8px;
+  
+      span {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        p {
+          font-family: "Montserrat";
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: 0em;
+          text-align: center;
+  
+          margin: 0;
+        }
+        .plus {
+          height: 20px;
+          width: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+
+.selected-btn {
+  &.MuiButton-root {
+    width: 100%;
+    max-width: 351px;
+    height: 100%;
+    max-height: 40px;
+    padding: 10px 156px;
+    border-radius: 8px;
+    gap: 10px;
+    background-color: var(--primary);
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-top: 27px;
+    text-transform: capitalize;
+
+    &:hover {
+      background-color: var(--primary);
+    }
+  }
+}

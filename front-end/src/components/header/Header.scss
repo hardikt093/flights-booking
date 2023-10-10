@@ -1,0 +1,54 @@
+.header-container {
+  position: absolute;
+  width: 100%;
+}
+
+.register-btn {
+  &.font-white {
+    &.MuiButton-root {
+      color: var(--white);
+    }
+  }
+
+  &.MuiButton-root {
+    color: var(--dark);
+    text-transform: capitalize;
+    padding: 10px;
+    font-weight: 500;
+  }
+}
+
+.login-btn {
+  &.font-white {
+    &.MuiButton-root {
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+  }
+  &.MuiButton-root {
+    padding: 10px 15px;
+    color: var(--dark);
+    border-radius: 8px;
+    border: 1px solid var(--dark);
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-left: 15px;
+    line-height: 19.5px;
+  }
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  cursor: pointer;
+  .btn {
+    color: var(--white, #fff);
+    text-transform: capitalize;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}

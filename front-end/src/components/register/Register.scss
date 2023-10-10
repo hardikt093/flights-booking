@@ -1,0 +1,108 @@
+$input-border-color: var(--sub-primary);
+
+.container {
+  padding: 44px 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../assets/images/auth-bg.jpg");
+
+  .form-header {
+    text-align: center;
+    &.MuiTypography-root {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 24px;
+      line-height: normal;
+    }
+  }
+
+  .radio-label {
+    .MuiTypography-root {
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .custom-radio-button {
+      &.MuiRadio-root {
+        &.Mui-checked {
+          .MuiSvgIcon-root {
+            color: var(--primary);
+            height: 11px;
+            width: 11px;
+          }
+        }
+
+        .MuiSvgIcon-root {
+          height: 11px;
+          width: 11px;
+        }
+      }
+    }
+  }
+  .form-label {
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .input-fields {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    &.confirm-password {
+      margin-bottom: 0;
+    }
+    .MuiInputBase-root {
+      border-radius: 8px;
+      border: 1px solid $input-border-color;
+      &:hover {
+        border: 1px solid $input-border-color;
+      }
+      &.Mui-focused {
+        border: 1px solid $input-border-color;
+        outline: none;
+      }
+      .MuiInputBase-input {
+        padding: 15px 30px;
+        font-size: 14px;
+      }
+    }
+  }
+  .custom-check-box {
+    .Mui-checked {
+      .MuiSvgIcon-root {
+        color: var(--primary);
+      }
+    }
+    .MuiTypography-root {
+      font-size: 13px;
+      text-transform: capitalize;
+      color: var(--light-text);
+    }
+  }
+  .form-submit-button {
+    background-color: var(--primary);
+    border-radius: 8px;
+    box-shadow: 0px 15px 20px 0px rgba(26, 151, 212, 0.2);
+    margin: 20px 0 30px 0;
+    text-align: center;
+    padding: 10px 30px;
+    &:hover {
+      background-color: var(--primary);
+      box-shadow: 0px 15px 20px 0px rgba(26, 151, 212, 0.2);
+    }
+  }
+  .login-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--lighter-text);
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0;
+    a {
+      font-weight: 600;
+      color: var(--primary);
+      margin-left: 5px;
+      text-decoration: none;
+    }
+  }
+  .Mui-error {
+    margin-left: 0;
+  }
+}
