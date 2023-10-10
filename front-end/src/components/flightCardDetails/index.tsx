@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import EditFlight from '../edit-flight/EditFlight'
 import { FlightDataInterface } from '../../interfaces/Flight.interface'
 import { toast } from 'react-toastify'
+import DeleteFilghtModal from '../delete-flight/DeleteFilght'
+import dayjs, { Dayjs } from 'dayjs'
 
 
 const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
@@ -18,6 +20,8 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
   const userDetails = JSON.parse(localStorage.getItem("userDetails")!);
   const [isEditFlight, setIsEditFlight] = useState<boolean>(false);
   const [editFlightData, setEditFlightData] = useState<FlightDataInterface>();
+  const [id, setId] = useState('')
+  const [deleteModal, setDeleteModal] = useState(false)
 
   const handleModalOpen = (id: string) => {
     if (token) {
@@ -30,12 +34,8 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
   }
 
   const handleDeleteFlight = (id: string) => {
-    deleteFlightById(id).then((res) => {
-      getData();
-      toast.success("Flight Deleted Successfully!!!", { autoClose: 4000 });
-    }).catch((err) => {
-      toast.error(err?.message, { autoClose: 4000 });
-    })
+    setId(id)
+    setDeleteModal(true);
   }
   return (
     <>
@@ -48,7 +48,7 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
           </Typography>
           <Typography>
             <img src={AllImages.calendar} />
-            {new Date(data?.departure).toLocaleDateString()}
+            {dayjs(data?.departure, "DD/MM/YYYY").format("DD MMM YYYY")}
           </Typography>
           <Typography>
             <img src={AllImages.map} />
@@ -72,7 +72,7 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
               <Button variant="contained" onClick={() => handleDeleteFlight(data?.id)}>Delete</Button>
             </> :
               <Button variant="contained" onClick={() => handleModalOpen(data?.id)}
-                endIcon={<img src={AllImages.frame} />}
+                endIcon={<img src={AllImages.greater} />}
               >Book Now
               </Button>
 
@@ -87,6 +87,7 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
           setIsEdit={(value: boolean) => { setIsEditFlight(value); getData() }}
           editData={editFlightData}
         />}
+      {true && <DeleteFilghtModal open={deleteModal} setOpen={setDeleteModal} id={id} handleClick={() => { getData() }} />}
     </>
   )
 }

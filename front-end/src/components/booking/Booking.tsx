@@ -24,7 +24,7 @@ const Booking = () => {
               <Button
                 className="start-button"
                 variant="contained"
-                endIcon={<img src={AllImages.grater} />}
+                endIcon={<img src={AllImages.greater} />}
               >
                 Let's Start Now
               </Button>

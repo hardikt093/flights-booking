@@ -200,6 +200,9 @@ const AddFlight = ({
       formSetvalue("fromDate", flightData.departure);
       formSetvalue("toDate", flightData.return);
       formSetvalue("companyName", flightData.name);
+      setValue([dayjs(flightData?.departure, "DD/MM/YYYY"),dayjs(flightData?.return,"DD/MM/YYYY")]);
+      setFromAirport(flightData?.from)
+      setToAirport(flightData?.to);
       setFile(flightData?.image);
     }
   }, [flightData]);
@@ -294,7 +297,7 @@ const AddFlight = ({
                         lineHeight: "20px",
                         height: "100%",
                         borderRadius: "20px",
-                        width: "460px",
+                        width: "230px",
                         color: "var(--light-text)",
                       },
                     },
@@ -302,6 +305,7 @@ const AddFlight = ({
                   onInputChange={(event, value) => {
                     setFromAirport(value);
                   }}
+                  value={airportData?.find((item) => item.name === fromAirport)}
                   id="custom-input-demo"
                   options={airportData}
                   onChange={(event, newValue) =>
@@ -350,13 +354,14 @@ const AddFlight = ({
                         lineHeight: "20px",
                         height: "100%",
                         borderRadius: "20px",
-                        width: "460px",
+                        width: "230px",
                         color: "var(--light-text)",
                       },
                     },
                   }}
                   id="custom-input-demo"
                   options={toAirportData}
+                  value={toAirportData?.find((item) => item.name === toAirport)}
                   onChange={(event, newValue) =>
                     formSetvalue("toAirport", newValue?.name)
                   }
@@ -396,6 +401,7 @@ const AddFlight = ({
                       setValue(newValue);
                     }}
                     className="date-range-picker"
+                    format="DD MMM YYYY"
                   />
                 </DemoItem>
               </DemoContainer>
@@ -500,7 +506,7 @@ const AddFlight = ({
               }`}
             variant="contained"
             type="submit"
-            startIcon={userDetails?.userRole?.name === "user" && (
+            startIcon={userDetails?.userRole?.name !== "flight" && (
                 <img src={AllImages.search} />
               )
             }
