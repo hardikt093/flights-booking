@@ -7,8 +7,7 @@ import { useState } from "react";
 import { FlightDataInterface } from "../../interfaces/Flight.interface";
 
 const Booking = () => {
-  const [searchData, setSearchData] = useState<FlightDataInterface[]>([]);
-  console.log('searchData: ', searchData);
+  const [searchData, setSearchData] = useState<FlightDataInterface[]>();
   return (
     <div>
       <div className="booking-container">
@@ -40,7 +39,7 @@ const Booking = () => {
           </div>
           <img src={AllImages.Ornament2} className="left" />
           <img src={AllImages.Ornament69} className="right" />
-          {searchData && <FlightResult searchData={searchData} />}
+           <FlightResult searchData={searchData} />
         </Container>
       </div>
     </div>

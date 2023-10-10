@@ -20,7 +20,7 @@ const Flight = ({ searchData }: FlightInterface) => {
     }
     const data = await getAllFlightsByUser({
       params: {
-        limit: 5,
+        limit: 1000,
         page: 1
       },
     })

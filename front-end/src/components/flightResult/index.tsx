@@ -10,11 +10,11 @@ import { io } from "socket.io-client";
 const baseUrl: string | undefined = process.env.REACT_APP_API_BASE_URL;
 let socket: any;
 if (baseUrl) {
-  socket = io(baseUrl);
+    socket = io(baseUrl);
 }
 
 const FlightResult = ({ searchData }: FlightResultInterface) => {
-    const [flightData, setFlightData] = useState<FlightDataInterface[]>([])
+    const [flightData, setFlightData] = useState<FlightDataInterface[]>()
     const [flightDetails, setFlightDetails] = useState<FlightDataInterface>()
     const [active, setActive] = useState(0)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -33,13 +33,16 @@ const FlightResult = ({ searchData }: FlightResultInterface) => {
     const getData = async () => {
         if (searchData && searchData?.length > 1) {
             setFlightData(searchData?.slice(0, 3))
-            setFlightDetails(searchData[0])
-
+            setFlightDetails(searchData[0]);
+            return;
+        }
+        if (searchData && searchData.hasOwnProperty('message')) {
+            setFlightData(searchData)
             return
         }
         const data = await getAllFlightsByUser({
             params: {
-                limit: 5,
+                limit: 1000,
                 page: 1
             },
         })
@@ -57,23 +60,23 @@ const FlightResult = ({ searchData }: FlightResultInterface) => {
 
     const handleImage = (id: string, index: number) => {
         setActive(index)
-        const selectedData = flightData.find((filght) => filght.id === id)
+        const selectedData = flightData && flightData.find((filght) => filght.id === id)
         selectedData && setFlightDetails(selectedData)
     }
     useEffect(() => {
         getData()
     }, [searchData])
     return (<>
-        {/* {searchData.length > 0 ? <> */}
 
         {windowWidth > 1200 ?
             <>
-                <div className='flightResult-container'>
+                {Array.isArray(flightData) ? <div className='flightResult-container'>
                     <div className='image-container'>
                         {flightData.slice(0, 3).map((flight: FlightDataInterface, index: number) => {
                             return <>
                                 <div
                                     className={index === active ? 'active image' : 'image'}
+                                    key={index}
                                 >
                                     {flight?.bookedCount > 0 &&
                                         <Typography>{flight?.bookedCount} Bookings </Typography>
@@ -85,17 +88,12 @@ const FlightResult = ({ searchData }: FlightResultInterface) => {
 
                     </div>
                     <div>
-                        {flightDetails && <FlightCardDetails data={flightDetails} getData={function (): void {
-                            throw new Error('Function not implemented.');
-                        }} />}
+                        {flightDetails && <FlightCardDetails data={flightDetails} getData={getData} />}
                     </div>
-                </div>
+                </div> : <p>{searchData && searchData.message}</p>}
             </> : <>{flightData && <Flight searchData={flightData} />}</>
         }
-        {/* </>:<><Flight/></>
-        }
 
-     */}
     </>)
 }
 

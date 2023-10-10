@@ -8,6 +8,7 @@ import { bookFlight } from '../../services/Booking.service'
 import { useNavigate } from 'react-router-dom'
 import EditFlight from '../edit-flight/EditFlight'
 import { FlightDataInterface } from '../../interfaces/Flight.interface'
+import { toast } from 'react-toastify'
 
 
 const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
@@ -23,14 +24,18 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
 
       bookFlight(id)
       setOpen(true)
-    }else{
+    } else {
       navigate('/login')
     }
   }
 
-  const handleDeleteFlight = async (id: string) => {
-    await deleteFlightById(id)
-    getData()
+  const handleDeleteFlight = (id: string) => {
+    deleteFlightById(id).then((res) => {
+      getData();
+      toast.success("Flight Deleted Successfully!!!", { autoClose: 4000 });
+    }).catch((err) => {
+      toast.error(err?.message, { autoClose: 4000 });
+    })
   }
   return (
     <>
@@ -79,7 +84,7 @@ const FlightCardDetails = ({ data, getData }: FlightCardDetailsInterface) => {
       {isEditFlight &&
         <EditFlight
           isEdit={isEditFlight}
-          setIsEdit={(value: boolean) => { setIsEditFlight(value) }}
+          setIsEdit={(value: boolean) => { setIsEditFlight(value); getData() }}
           editData={editFlightData}
         />}
     </>
